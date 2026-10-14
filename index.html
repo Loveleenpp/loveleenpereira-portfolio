@@ -1834,7 +1834,6 @@ main > *{min-width:0}
 </div>
 
 
-<div class="cursor" id="cursor" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M1 1l12 5-5 2-2 5z"/></svg><span>Loveleen</span></div>
 
 <script>
 (() => {
@@ -2346,13 +2345,6 @@ main > *{min-width:0}
     // pause when scrolled away
     if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && !sv.paused) sv.pause(); })).observe(sv);
   }
-  // ---- cursor name tag ----
-  const cur = document.getElementById('cursor');
-  if (matchMedia('(pointer:fine)').matches) {
-    addEventListener('pointermove', e => { cur.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; cur.classList.add('on'); }, {passive:true});
-    document.addEventListener('pointerleave', () => cur.classList.remove('on'));
-  }
-
   // ---- copy email ----
   const copyBtn = document.getElementById('copyBtn'), mail = document.getElementById('mail');
   copyBtn.addEventListener('click', () => {
