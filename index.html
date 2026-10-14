@@ -59,7 +59,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .tool:hover .tip,.tool:focus-visible .tip,.tool.flash .tip{opacity:1}
 
 /* objects: position and rotation come from per-mode custom properties on each element */
-.obj{position:absolute;left:var(--x);top:var(--y);transform:rotate(var(--r,0deg));z-index:2;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:pan-y;
+.obj{position:absolute;left:var(--x);top:var(--y);transform:rotate(var(--r,0deg));z-index:2;cursor:grab;-webkit-user-select:none;user-select:none;touch-action:pan-y;
   transition:left var(--glide),top var(--glide),transform var(--glide),width var(--glide),height var(--glide),opacity .45s;
   transition-delay:var(--d,0ms);
   animation:land .7s cubic-bezier(.2,.9,.3,1.2) var(--d,0ms) backwards, drift var(--fd,8s) ease-in-out var(--fdel,0s) infinite}
@@ -532,6 +532,12 @@ html.work-open,html.work-open body{overflow:hidden}
 .ct-mail a:hover{border-bottom-color:#fff}
 .ct-copy{all:unset;cursor:pointer;font-size:var(--s-sm);padding:7px 14px;border:1px solid rgba(255,255,255,.6);border-radius:999px;transition:background .2s,color .2s}
 .ct-copy:hover,.ct-copy:focus-visible{background:#FFFAF5;color:#5E1F22}
+.ct-kicker{margin:0 0 22px;font-family:var(--f-mono);font-size:var(--s-xs);letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.ct-row2{display:flex;flex-direction:column;gap:6px;margin:0 0 22px!important;font-family:var(--f-mono);font-size:var(--s-base);color:#fff}
+.ct-row2 b{font-weight:500;font-size:var(--s-xs);letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.ct-row2 a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5)}
+.ct-row2 a:hover{border-bottom-color:#fff}
+.ct-card .ct-mail{justify-content:flex-start}
 .ct-cv{margin:22px 0 0;font-family:var(--f-mono);font-size:var(--s-xs);letter-spacing:.12em;text-transform:uppercase;opacity:.8}
 .ct-pic{display:block;width:clamp(170px,19vw,260px);height:auto;box-shadow:0 18px 40px rgba(30,15,15,.25)}
 .ct-name{margin:0;align-self:stretch;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;padding-right:clamp(14px,2vw,24px);border-right:1px solid rgba(255,255,255,.7);font-family:var(--f-mono);font-weight:500;font-size:var(--s-sm);letter-spacing:.4em;text-transform:uppercase;color:#fff}
@@ -543,7 +549,7 @@ html.work-open,html.work-open body{overflow:hidden}
 #about > .notes{overflow:hidden;cursor:pointer}
 #about > .notes:focus-visible{outline:2px dashed #fff;outline-offset:4px}
 .notes .ch{display:inline-block;will-change:transform}
-.notes.falling,.notes.fallen{user-select:none}
+.notes.falling,.notes.fallen{-webkit-user-select:none;user-select:none}
 .fall-hint{position:absolute;top:14px;right:16px;font-family:var(--f-mono);font-size:var(--s-sm);letter-spacing:.06em;color:#fff;opacity:0;transform:translateY(-4px);transition:opacity .4s ease,transform .4s ease;pointer-events:none}
 .fall-hint.on{opacity:.9;transform:none;animation:hintbob 2.4s ease-in-out 1s infinite}
 @keyframes hintbob{50%{transform:translateY(-3px)}}
@@ -963,14 +969,14 @@ html.work-open,html.work-open body{overflow:hidden}
 .proj .rv{transition-duration:.9s!important;transition-timing-function:cubic-bezier(.2,.8,.2,1)!important}
 
 /* ---------- the journey: stamps for Dubai, Oxford and India ---------- */
-.trip{position:fixed;inset:0;z-index:3000;overflow:hidden;background:var(--trip-bg,#817943);transition:background-color .9s ease;
+.trip{position:fixed;inset:0;z-index:3550;overflow:hidden;background:var(--trip-bg,#817943);transition:background-color .9s ease;
   clip-path:circle(0 at var(--cx,50%) var(--cy,50%));font-family:var(--f-mono)}
 .trip.open{clip-path:circle(300vmax at var(--cx,50%) var(--cy,50%));transition:clip-path .7s cubic-bezier(.65,0,.35,1),background-color .9s ease}
 .trip-world{position:absolute;left:0;top:0;will-change:transform}
 .trip-trail{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
 .trip-trail path{fill:none;stroke:#FFFAF5;stroke-width:5;stroke-linecap:round;stroke-dasharray:0 13;opacity:.9}
 .stop{position:absolute;display:grid;place-items:center}
-.stop .word{position:absolute;left:0;right:0;text-align:center;font-family:"Bowlby One","Arial Black",Impact,sans-serif;font-size:clamp(56px,13.5vw,220px);line-height:.85;letter-spacing:.01em;color:var(--w);white-space:nowrap;user-select:none}
+.stop .word{position:absolute;left:0;right:0;text-align:center;font-family:"Bowlby One","Arial Black",Impact,sans-serif;font-size:clamp(56px,13.5vw,220px);line-height:.85;letter-spacing:.01em;color:var(--w);white-space:nowrap;-webkit-user-select:none;user-select:none}
 .stop .word.top{top:calc(50% - min(29vh,215px) - .62em)}
 .stop .word.bottom{bottom:calc(50% - min(29vh,215px) - .62em)}
 .stamp{position:relative;width:min(300px,58vw,43vh);filter:drop-shadow(6px 9px 0 rgba(42,39,38,.28));transform:rotate(var(--tilt,0deg)) scale(.92);transition:transform .6s cubic-bezier(.34,1.56,.64,1)}
@@ -980,7 +986,9 @@ html.work-open,html.work-open body{overflow:hidden}
 .trip-ui > *{pointer-events:auto}
 .trip-close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;background:#FFFAF5;color:#2A2726;font-size:12px;font-weight:500;cursor:pointer;border:2px solid #2A2726}
 .trip-count{position:absolute;top:calc(22px + env(safe-area-inset-top,0px));left:18px;font-size:12px;letter-spacing:.04em}
-.trip-coords{position:absolute;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom,0px));text-align:center;font-size:10.5px;letter-spacing:.06em;opacity:.9}
+.trip-home{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);padding:12px 22px;border-radius:999px;background:#FFFAF5;color:#2A2726;font-family:var(--f-mono);font-size:13px;font-weight:500;cursor:pointer;border:2px solid #2A2726;box-shadow:0 6px 0 rgba(42,39,38,.25);white-space:nowrap}
+.trip-home:hover{background:#2A2726;color:#FFFAF5}
+.trip-coords{position:absolute;left:0;right:0;bottom:calc(84px + env(safe-area-inset-bottom,0px));text-align:center;font-size:10.5px;letter-spacing:.06em;opacity:.9}
 .car{position:absolute;left:0;top:0;z-index:5;margin:0;transform-origin:0 0;pointer-events:none}
 .car-in{position:relative;transform:translate(-50%,-88%)}
 .car-body{display:block;width:100%;height:auto;position:relative;z-index:2}
@@ -1043,7 +1051,7 @@ html.work-open,html.work-open body{overflow:hidden}
    ========================================================= */
 @media (max-width:860px){
   /* ---- hero desk: name in the middle, objects scattered around it like on desktop ---- */
-  .desk{height:100svh!important;min-height:760px!important;max-height:900px;padding:0!important}
+  .desk{height:100vh!important;height:100svh!important;min-height:760px!important;max-height:900px;padding:0!important}
   .intro,.desk[data-mode] .intro{position:absolute!important;left:6%!important;right:6%!important;top:35%!important;width:auto!important;max-width:none!important;margin:0!important;z-index:5}
   .desk[data-mode="notebook"] .intro{top:31%!important}
   .name img{width:min(220px,57vw)!important}
@@ -1252,8 +1260,89 @@ html.work-open,html.work-open body{overflow:hidden}
   .proj .st-body p{font-size:11.5px!important;line-height:1.7!important}
   .st-bts{order:3;width:min(220px,60%)!important;margin:0 auto!important}
 }
+
+/* ---- lettering titles: one scale for every title image (same letter height everywhere) ---- */
+.lt{line-height:0!important;font-size:0!important}
+.lt img{display:inline-block;width:calc(var(--w) * clamp(.2px, .024vw, .34px))!important;height:auto;max-width:100%}
+.kw-h.lt,.wkb-h.lt{margin-bottom:14px!important}
+
+/* work index labels: centred under each tile, two-line labels included */
+.wk-tile{align-items:center!important}
+.wk-lbl{position:relative;text-align:center!important;margin-inline:auto!important;align-self:center!important;width:100%}
+.wk-tile.live .wk-lbl::after{position:absolute;margin-left:4px}
+
+/* ---- About + Gallery: original placement (About title left, Gallery title right), but held to one
+   centred width so nothing drifts to the far edge on wide screens or in Safari ---- */
+#about,#studio,#playground{width:100%;max-width:1120px!important;margin-inline:auto!important;box-sizing:border-box}
+@media (min-width:861px){
+  #about{grid-template-columns:minmax(0,1fr) minmax(240px,380px)!important;grid-template-areas:"h v" "t v" "l ."!important;column-gap:clamp(32px,4vw,64px)!important}
+  #about .notes{max-width:none!important;width:100%;box-sizing:border-box}
+  #about .about-reel{width:100%!important;max-width:380px;justify-self:end!important}
+  #studio{grid-template-columns:minmax(0,1fr) minmax(240px,330px)!important}
+}
+@media (max-width:860px){
+  #about .notes{max-width:none!important;width:100%;box-sizing:border-box}
+}
+/* ---- scroll cues ---- */
+.scroll-cue{position:absolute;left:50%;bottom:calc(86px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:6;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.85;pointer-events:none;transition:opacity .5s}
+.scroll-cue i{display:block;width:1.5px;height:26px;background:linear-gradient(#fff,transparent);animation:cue 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.scroll-cue.gone{opacity:0}
+@media (min-width:861px){.scroll-cue{bottom:96px}}
+.swipe-hint{display:block;margin:10px auto 0;text-align:center;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:inherit;opacity:.7}
+.pg-hint{display:block;text-align:center;margin-top:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#F3EBDD;opacity:.75}
+@media (prefers-reduced-motion:reduce){.scroll-cue i{animation:none}}
+.keep-scroll{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));z-index:3400;transform:translate(-50%,12px);padding:9px 16px;border-radius:999px;background:rgba(94,31,34,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#FFFAF5;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .5s,transform .5s cubic-bezier(.2,.8,.2,1);white-space:nowrap}
+.keep-scroll b{display:inline-block;font-weight:400;animation:ksb 1.4s ease-in-out infinite}
+.keep-scroll.on{opacity:1;transform:translate(-50%,0)}
+@keyframes ksb{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+@media (max-width:860px){.keep-scroll{bottom:calc(84px + env(safe-area-inset-bottom,0px));font-size:10.5px}}
+@media (prefers-reduced-motion:reduce){.keep-scroll b{animation:none}}
+
+/* =========================================================
+   SAFARI / WEBKIT COMPATIBILITY LAYER
+   ========================================================= */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+/* About video: Safari mis-sizes a box that has both aspect-ratio and height:100% inside a stretched grid row,
+   which pushed the photo off to the right. Size it from its width only. */
+#about .about-reel{height:auto!important;max-height:none!important;align-self:start!important;aspect-ratio:auto!important}
+#about .about-reel video{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;aspect-ratio:872/1468;object-fit:cover}
+/* full-bleed strips inside scrolling overlays: 100vw includes the scrollbar on macOS, so subtract it */
+.pc-strip{width:calc(100vw - var(--sbw,0px))!important;margin-left:calc(50% - (100vw - var(--sbw,0px)) / 2)!important}
+@media (min-width:601px){.mb{width:calc(100vw - var(--sbw,0px) - 24px)!important;margin-left:calc(50% - (100vw - var(--sbw,0px)) / 2 + 12px)!important}}
+@media (max-width:600px){.mb{width:calc(100vw - var(--sbw,0px) - 16px)!important;margin-left:calc(50% - (100vw - var(--sbw,0px)) / 2 + 8px)!important}}
+/* iOS: 100vh is taller than the visible screen; prefer the dynamic unit where supported */
+@supports (height:100dvh){.lbx-fig{height:100dvh}.lbx-fig img,.lbx-fig video{max-height:calc(100dvh - 112px)}}
+@media (max-width:860px){@supports (height:100dvh){.lbx-fig img,.lbx-fig video{max-height:calc(100dvh - 150px)}}}
+/* prefixed fallbacks older Safari still needs */
+.trip{-webkit-clip-path:circle(0 at var(--cx,50%) var(--cy,50%))}
+.trip.open{-webkit-clip-path:circle(300vmax at var(--cx,50%) var(--cy,50%))}
+.flip-in{-webkit-transform-style:preserve-3d}
+/* iOS Safari: stop tap-highlight flashes and double-tap zoom delays on interactive bits */
+button,a,.obj,.wk-tile,.bs-open,.mb-o,.kc{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+/* grid/flex images in Safari can stretch vertically; keep them proportional */
+.wk-img img,.bs-open img,.ar-zoom img,.kw-c img{height:auto}
+.wk-img img{height:100%}
+
+/* ROOT CAUSE (found by rendering in WebKit): main is a one-column grid with an "auto" track. The tilted ticker
+   ribbons are 112vw wide, and Safari lets that min-content width stretch the whole column to 112% of the
+   window, so every section was centred in a too-wide column and pushed off to the right. Clamp the track. */
+main{grid-template-columns:minmax(0,1fr)!important}
+main > *{min-width:0}
+.tapes{min-width:0;max-width:100%}
+
+/* Name / Creative-licence flip card: WebKit flattens the 3D card (an ancestor gets animated opacity/scale), so
+   backface-visibility stops hiding the reverse side and the mirrored licence covered the name. Swap the faces'
+   visibility halfway through the turn so only the correct side can ever show, in every browser. */
+.flip .face{transition:visibility 0s linear .32s}
+.flip .face.back{visibility:hidden}
+.flip.on .face.back{visibility:visible}
+.flip.on .face.front{visibility:hidden}
+
+.ct-card .ct-mail{align-items:flex-start!important;justify-content:flex-start!important}
+@media (max-width:860px){.ct-card .ct-row2{font-size:11px!important}.ct-card .ct-copy{padding:5px 10px}}
 </style>
-<div class="loader" id="loader" aria-hidden="true"><p class="type"><span class="br">{</span><span class="mid"><span id="typed"></span><span class="caret"></span></span><span class="br">}</span></p></div>
+<script>addEventListener("pointerdown",()=>{window.__lastPtr=performance.now()},true);addEventListener("pointerup",()=>{window.__lastPtr=performance.now()},true);</script><div class="loader" id="loader" aria-hidden="true"><p class="type"><span class="br">{</span><span class="mid"><span id="typed"></span><span class="caret"></span></span><span class="br">}</span></p></div>
 <script>document.documentElement.classList.add('loading')</script>
 <canvas id="flecks" aria-hidden="true"></canvas>
 
@@ -1402,21 +1491,14 @@ html.work-open,html.work-open body{overflow:hidden}
         <img class="ns-b" src="ct-2.jpg" alt="Directing a shoot in a styled bedroom set" width="459" height="520" loading="lazy">
         <img class="ns-c" src="ct-3.jpg" alt="Make-up being applied to a model on set" width="459" height="520" loading="lazy">
       </div>
-      <div class="ns-text">
-        <h2 class="ns-h">Next Steps</h2>
-        <p>Each project in this portfolio has been a chance to learn and grow, from refining technical skills to leading creative direction and collaborating across teams.</p>
-        <p>These experiences have shaped a thoughtful approach that values both concept and craft. Looking ahead, I am excited to keep exploring new techniques, tools, and creative collaborations that challenge ideas, expand perspective, and bring fresh energy to future projects.</p>
+      <div class="ns-text ct-card">
+        <p class="ct-kicker">Get in touch</p>
+        <p class="ct-row2"><b>Email</b><span class="ct-mail"><a id="mail2" href="mailto:loveleenpereira@gmail.com">loveleenpereira@gmail.com</a><button class="ct-copy" id="copyBtn2" type="button">Copy email</button></span></p>
+        <p class="ct-row2"><b>Phone</b><span><a href="tel:+917760072562">+91 77600 72562</a></span></p>
+        <p class="ct-cv">CV available on request only</p>
       </div>
     </div>
     <div class="ct-band"><h2 id="ct-h" class="ct-q">Always up for matcha and a good conversation, especially if it&rsquo;s about making brands feel amazing!</h2></div>
-    <div class="ct-main">
-      <div class="ct-info">
-        <p class="ct-line"><b>Email</b><i aria-hidden="true"></i><span class="ct-mail"><a id="mail2" href="mailto:loveleenpereira@gmail.com">loveleenpereira@gmail.com</a><button class="ct-copy" id="copyBtn2" type="button">Copy email</button></span></p>
-        <p class="ct-cv">CV available on request only</p>
-      </div>
-      <img class="ct-pic" src="ct-4.jpg" alt="Loveleen walking through Peet&rsquo;s Coffee with a matcha" width="304" height="608" loading="lazy">
-      <p class="ct-name" aria-hidden="true">Loveleen Pearl Pereira</p>
-    </div>
     <p class="ct-foot">Loveleen Pereira &middot; Multidisciplinary Creative &middot; Based in India</p>
   </section>
 </main>
@@ -1426,14 +1508,14 @@ html.work-open,html.work-open body{overflow:hidden}
   <div class="wp-in">
   
   <section class="wk" aria-labelledby="wk-h">
-    <div class="wk-head"><h2 id="wk-h" class="wk-title rv">Work</h2><p class="wk-tag rv">Brands, campaigns and stories I&rsquo;ve directed, shaped and brought to life.</p></div>
+    <div class="wk-head"><h2 id="wk-h" class="wk-title rv lt"><img src="t-work.png" alt="Work" width="484" height="183" style="--w:484" draggable="false"></h2><p class="wk-tag rv">Brands, campaigns and stories I&rsquo;ve directed, shaped and brought to life.</p></div>
     <div class="wk-grid"><button type="button" class="wk-tile wk-cd live" style="--i:0" data-proj="cd" aria-label="Open Creative Direction"><span class="wk-no">(01)</span><span class="wk-img"><img src="tile-bs.jpg" alt="" loading="lazy"></span><span class="wk-lbl">Creative Direction</span></button><button type="button" class="wk-tile wk-sm live" style="--i:1" data-proj="sm" aria-label="Open Social Media"><span class="wk-no">(02)</span><span class="wk-img"><img src="tile-sm.jpg" alt="" loading="lazy"></span><span class="wk-lbl">Social Media</span></button><button type="button" class="wk-tile wk-bs live" style="--i:2" data-proj="bs" aria-label="Open Branding"><span class="wk-no">(03)</span><span class="wk-img"><img src="tile-cd.jpg" alt="" loading="lazy"></span><span class="wk-lbl">Branding</span></button><button type="button" class="wk-tile wk-bc live" style="--i:3" data-proj="bc" aria-label="Open Campaigns"><span class="wk-no">(04)</span><span class="wk-img"><img src="tile-bc.jpg" alt="" loading="lazy"></span><span class="wk-lbl">Campaigns</span></button><button type="button" class="wk-tile wk-ar live" style="--i:4" data-proj="ar" aria-label="Open Archives"><span class="wk-no">(05)</span><span class="wk-img"><img src="tile-ar.jpg" alt="" loading="lazy"></span><span class="wk-lbl">Archives</span></button><div class="wk-tile wk-cs" style="--i:5" aria-disabled="true"><span class="wk-no">(06)</span><span class="wk-img wk-soon"><span class="soon-plate">COMING<br>SOON</span></span><span class="wk-lbl">Cultural Strategist</span></div><div class="wk-tile wk-fs" style="--i:6" aria-disabled="true"><span class="wk-no">(07)</span><span class="wk-img wk-soon"><span class="soon-plate">COMING<br>SOON</span></span><span class="wk-lbl">Fashion Stylist</span></div></div>
     <div class="wk-brands" aria-labelledby="wkb-h">
-      <div class="wkb-head"><h3 id="wkb-h" class="wkb-h rv">Brands</h3><p class="wkb-p rv">I have worked with multiple brands to create content for Instagram and TikTok, focusing on building engagement and growing their digital presence.</p></div>
+      <div class="wkb-head"><h3 id="wkb-h" class="wkb-h rv lt"><img src="t-brands.png" alt="Brands" width="544" height="215" style="--w:544" draggable="false"></h3><p class="wkb-p rv">I have worked with multiple brands to create content for Instagram and TikTok, focusing on building engagement and growing their digital presence.</p></div>
       <figure class="wkb-fig rv"><video muted playsinline preload="metadata" poster="brands.jpg" aria-label="Brands I have worked with: Flying Tiger Copenhagen, Cheekee, Citron, ASHRI, CH-Alpha, Wimpy, Shoexpress, Mimo, Krump, HKW Wealth, Peet&rsquo;s Coffee and Layal"><source src="brands.mp4" type="video/mp4"></video></figure>
     </div>
     <section class="kw" aria-labelledby="kw-h">
-      <h3 id="kw-h" class="wkb-h kw-h rv">Kind words</h3>
+      <h3 id="kw-h" class="wkb-h kw-h rv lt"><img src="t-kindwords.png" alt="Kind words" width="1028" height="192" style="--w:1028" draggable="false"></h3>
       <p class="kw-sub rv">Messages from clients and collaborators, shared as they were sent.</p>
       <div class="kw-row"><figure class="kw-c rv" style="--i:0"><blockquote>&ldquo;And thank you SO much for all your incredible work @Loveleen &#129401;&#129401;&#129401;&rdquo;</blockquote><figcaption><b>Isha Mazumdar</b><span>Robinson Street &middot; Aug 2026</span></figcaption></figure><figure class="kw-c rv" style="--i:0"><blockquote>&ldquo;Loveleen, it was so so nice meeting you! I hope you managed to get some rest after the event. It was very well done&hellip;&rdquo;</blockquote><figcaption><b>Saher Shaikh</b><span>After an event &middot; May 2025</span></figcaption></figure><figure class="kw-c rv" style="--i:1"><blockquote>&ldquo;Hey!! The Instagram post is stunning &#128588; well done!!&rdquo;</blockquote><figcaption><b>Anzune</b><span>Head of Sales, HKW Wealth &middot; Aug 2025</span></figcaption></figure><figure class="kw-c rv" style="--i:2"><blockquote>&ldquo;Well done on the website, it looks stunning &#10084;&#65039;&rdquo;</blockquote><figcaption><b>Anzune</b><span>Head of Sales, HKW Wealth &middot; Dec 2025</span></figcaption></figure><figure class="kw-c rv" style="--i:3"><blockquote>&ldquo;Thank you so much for today. The photoshoot went so well, you both were so efficient and clear and I think we got some amazing shots. Great choice for doing it at Dryp &#128079;&rdquo;</blockquote><figcaption><b>Freyja Rampe</b><span>Founder, Krump</span></figcaption></figure></div>
     </section>
@@ -1462,7 +1544,7 @@ html.work-open,html.work-open body{overflow:hidden}
 <div class="proj" id="proj-cd" role="dialog" aria-modal="true" aria-labelledby="proj-cd-h" hidden tabindex="-1">
   <div class="pj-top"><button class="wp-back pj-back" type="button">&larr; all work</button></div>
   <div class="pj-in">
-    <div class="pj-head"><h2 id="proj-cd-h" class="wk-title rv">Creative Direction</h2><div class="pj-sum rv"><p>A selection of reels and brand projects I&rsquo;ve directed, shaped and brought to life. From developing creative concepts to translating brand identities into engaging visual stories, these are some of the projects I&rsquo;m most proud to have worked on.</p><p>Each project reflects my approach to content: thoughtful storytelling, a strong visual point of view and an understanding of what makes a brand resonate with its audience.</p></div></div>
+    <div class="pj-head"><h2 id="proj-cd-h" class="wk-title rv lt"><img src="t-cd.png" alt="Creative Direction" width="1342" height="222" style="--w:1342" draggable="false"></h2><div class="pj-sum rv"><p>A selection of reels and brand projects I&rsquo;ve directed, shaped and brought to life. From developing creative concepts to translating brand identities into engaging visual stories, these are some of the projects I&rsquo;m most proud to have worked on.</p><p>Each project reflects my approach to content: thoughtful storytelling, a strong visual point of view and an understanding of what makes a brand resonate with its audience.</p></div></div>
     <div class="pj-stage" aria-roledescription="carousel" aria-label="Creative direction reels">
       <div class="pj-cards"><figure class="pj-card" data-i="0" style="--ar:0.5990" aria-label="Krump reel"><video muted loop playsinline preload="metadata" poster="cd-krump.jpg" data-src="cd-krump.mp4"></video><figcaption>Krump</figcaption></figure><figure class="pj-card" data-i="1" style="--ar:0.6522" aria-label="ASHRI reel"><video muted loop playsinline preload="metadata" poster="cd-ashri.jpg" data-src="cd-ashri.mp4"></video><figcaption>ASHRI</figcaption></figure><figure class="pj-card" data-i="2" style="--ar:0.5625" aria-label="HKW Wealth reel"><video muted loop playsinline preload="metadata" poster="cd-legacy.jpg" data-src="cd-legacy.mp4"></video><figcaption>HKW Wealth</figcaption></figure><figure class="pj-card" data-i="3" style="--ar:0.7105" aria-label="CH-Alpha reel"><video muted loop playsinline preload="metadata" poster="cd-chalpha.jpg" data-src="cd-chalpha.mp4"></video><figcaption>CH-Alpha</figcaption></figure></div>
       <div class="pj-phone" aria-hidden="true"></div>
@@ -1476,13 +1558,13 @@ html.work-open,html.work-open body{overflow:hidden}
       <div class="st-left">
       <dl class="st-meta">
         <div><dt>Year</dt><dd>2024</dd></div>
-        <div><dt>Scope <span>(agency)</span></dt><dd>3 shoots and 6 reels each month,<br> Creative Direction,<br> Visual Design</dd></div>
+        <div><dt>Scope <span>(agency)</span></dt><dd>6 reels &times; 3 shoots, each month,<br> Creative Direction,<br> Visual Design</dd></div>
         <div><dt>Role</dt><dd>Creative Director</dd></div>
       </dl>
       <figure class="st-bts"><video autoplay muted loop playsinline preload="metadata" poster="krump-bts.jpg" aria-label="Behind the scenes on a Krump shoot: setting up lights and styling"><source src="krump-bts.mp4" type="video/mp4"></video><figcaption>behind the scenes</figcaption></figure>
       </div>
       <div class="st-body">
-        <h3 id="st-krump">Krump: bringing a premium Pilates brand to life, one reel at a time</h3>
+        <h3 id="st-krump">Krump &mdash; Creating for a New Kind of Pilates Brand</h3>
         <p>Krump is a premium Pilates accessory brand that I had the privilege of working with through the agency I worked with. From the very start, I aimed to create impactful and engaging content that would resonate with its target audience. By understanding the brand&rsquo;s essence and leveraging creative strategies, we produced compelling visuals and reels that showcased Krump&rsquo;s unique offerings in a relatable and aspirational way.</p>
         <p>The content generated impressive results, with one reel achieving around 18k views shortly after the brand&rsquo;s launch. This immediate engagement helped establish Krump as a recognized player in the Pilates and fitness community, proving the power of well-crafted content to drive brand awareness and audience connection.</p>
       </div>
@@ -1497,13 +1579,13 @@ html.work-open,html.work-open body{overflow:hidden}
       <div class="st-left">
       <dl class="st-meta">
         <div><dt>Year</dt><dd>2024</dd></div>
-        <div><dt>Scope <span>(agency)</span></dt><dd>8 reels,<br> 2 shoots</dd></div>
+        <div><dt>Scope <span>(agency)</span></dt><dd>8 reels &times; 2 shoots</dd></div>
         <div><dt>Role</dt><dd>Assistant Creative Director</dd></div>
       </dl>
       <figure class="st-bts"><video autoplay muted loop playsinline preload="metadata" poster="ashri-bts.jpg" aria-label="Behind the scenes on an ASHRI shoot: a model posing against a terracotta backdrop"><source src="ashri-bts.mp4" type="video/mp4"></video><figcaption>behind the scenes</figcaption></figure>
       </div>
       <div class="st-body">
-        <h3 id="st-ashri">ASHRI: precision, patience and a clean, cohesive aesthetic</h3>
+        <h3 id="st-ashri">Ashri Skin &mdash; A Fresh Perspective on Skincare</h3>
         <p>Ashri Skin was another particularly demanding client, where the co-founder was closely involved in every detail, from music and colour palettes to final imagery. With her background in architecture, the expectations for precision and visual consistency were extremely high.</p>
         <p>It was one of the more challenging accounts we handled, but also very rewarding to see the brand grow while maintaining a clean, cohesive aesthetic.</p>
       </div>
@@ -1516,12 +1598,12 @@ html.work-open,html.work-open body{overflow:hidden}
       <div class="st-left">
       <dl class="st-meta">
         <div><dt>Year</dt><dd>2025</dd></div>
-        <div><dt>Scope</dt><dd>6 reels<br><br>Creative Direction,<br> Brand Strategy,<br> Luxury Positioning,<br> Website Rebrand,<br> Visual Identity,<br> Digital Brand Experience</dd></div>
+        <div><dt>Scope</dt><dd>6 reels &times; 1 shoot<br><br>Creative Direction,<br> Brand Strategy,<br> Luxury Positioning,<br> Website Rebrand,<br> Visual Identity,<br> Digital Brand Experience</dd></div>
         <div><dt>Role</dt><dd>Creative Direction &amp;<br>Head of Marketing</dd></div>
       </dl>
       </div>
       <div class="st-body">
-        <h3 id="st-hkw">HKW Wealth: Creative Direction, Brand Strategy &amp; Digital Rebrand</h3>
+        <h3 id="st-hkw">HKW Wealth &mdash; Redefining the Brand</h3>
         <p>Working closely with the CEO and COO, I led the creative direction of HKW Wealth, translating the leadership team&rsquo;s vision into a refined luxury brand experience designed to resonate with ultra-high-net-worth individuals.</p>
         <p>The focus was on elevating the brand&rsquo;s positioning through a considered approach to luxury, where quality, discretion and distinction informed every touchpoint. From shaping the brand&rsquo;s visual identity and strategic direction to rebranding the website, I worked across the creative process to build a cohesive, premium presence that reflected the calibre of the clients HKW Wealth sought to attract.</p>
         <p>The result was a more intentional brand experience rooted in understated luxury, trust and exclusivity.</p>
@@ -1536,12 +1618,12 @@ html.work-open,html.work-open body{overflow:hidden}
       <div class="st-left">
       <dl class="st-meta">
         <div><dt>Year</dt><dd>2024</dd></div>
-        <div><dt>Scope <span>(agency)</span></dt><dd>6 reels,<br> 3 shoots</dd></div>
+        <div><dt>Scope <span>(agency)</span></dt><dd>6 reels &times; 3 shoots</dd></div>
         <div><dt>Role</dt><dd>Creative Director</dd></div>
       </dl>
       </div>
       <div class="st-body">
-        <h3 id="st-ch">CH-Alpha: introducing a collagen drink to the sports and wellness world</h3>
+        <h3 id="st-ch">CH-Alpha &mdash; Taking Collagen Beyond Beauty</h3>
         <p>CH Alpha presented a unique creative challenge: positioning a collagen drink within the sports and wellness space, at a time when there were few comparable products in the market. The challenge was to communicate the product&rsquo;s value in a way that felt relevant, engaging and accessible to its intended audience.</p>
         <p>Working collaboratively with my manager and colleagues, I contributed to developing content that helped bridge the gap between a relatively unfamiliar product and its potential consumers. The process was made even more rewarding by a supportive client who trusted the team&rsquo;s creative approach and encouraged collaboration throughout the project.</p>
         <p>This experience strengthened my ability to approach unfamiliar categories with curiosity, adapt creative thinking to different audiences and collaborate to bring a product&rsquo;s story to life.</p>
@@ -1562,7 +1644,7 @@ html.work-open,html.work-open body{overflow:hidden}
 <div class="proj pj-bc" id="proj-bc" role="dialog" aria-modal="true" aria-labelledby="proj-bc-h" hidden tabindex="-1">
   <div class="pj-top"><button class="wp-back pj-back" type="button">&larr; all work</button></div>
   <div class="pj-in">
-    <div class="pj-head ctr"><h2 id="proj-bc-h" class="wk-title rv">Campaigns</h2>
+    <div class="pj-head ctr"><h2 id="proj-bc-h" class="wk-title rv lt"><img src="t-campaigns.png" alt="Campaigns" width="743" height="206" style="--w:743" draggable="false"></h2>
       <div class="pj-sum rv"><p>Campaigns I&rsquo;ve helped take from a first idea to the screen: concepts, scripts and stories built around a single moment people remember.</p></div></div>
 
     <section class="cp cp-rose cp-wimpy" aria-labelledby="cp-h-wimpy">
@@ -1595,7 +1677,7 @@ html.work-open,html.work-open body{overflow:hidden}
 <div class="proj pj-bs" id="proj-bs" role="dialog" aria-modal="true" aria-labelledby="proj-bs-h" hidden tabindex="-1">
   <div class="pj-top"><button class="wp-back pj-back" type="button">&larr; all work</button></div>
   <div class="pj-in">
-    <div class="pj-head ctr"><h2 id="proj-bs-h" class="wk-title rv">Branding</h2>
+    <div class="pj-head ctr"><h2 id="proj-bs-h" class="wk-title rv lt"><img src="t-branding.png" alt="Branding" width="751" height="215" style="--w:751" draggable="false"></h2>
       <div class="pj-sum rv"><p>Brand identities shaped from the strategy up: positioning, visual language and the digital presence that carries it.</p></div></div>
 
     <section class="bs-case" aria-labelledby="bs-h">
@@ -1668,7 +1750,7 @@ html.work-open,html.work-open body{overflow:hidden}
 <div class="proj pj-sm" id="proj-sm" role="dialog" aria-modal="true" aria-labelledby="proj-sm-h" hidden tabindex="-1">
   <div class="pj-top"><button class="wp-back pj-back" type="button">&larr; all work</button></div>
   <div class="pj-in">
-    <div class="pj-head ctr"><h2 id="proj-sm-h" class="wk-title rv">Social Media</h2>
+    <div class="pj-head ctr"><h2 id="proj-sm-h" class="wk-title rv lt"><img src="t-sm.png" alt="Social Media" width="1067" height="201" style="--w:1067" draggable="false"></h2>
       <div class="pj-sum rv"><p>Content made for the feed: mobile-first, trend-aware and built around what the algorithm rewards and people actually stop for.</p></div></div>
 
     <div class="sm-tabs rv" role="tablist" aria-label="Social media projects">
@@ -1746,7 +1828,7 @@ html.work-open,html.work-open body{overflow:hidden}
 <div class="proj pj-ar" id="proj-ar" role="dialog" aria-modal="true" aria-labelledby="proj-ar-h" hidden tabindex="-1">
   <div class="pj-top"><button class="wp-back pj-back" type="button">&larr; all work</button></div>
   <div class="pj-in">
-    <div class="pj-head ctr"><h2 id="proj-ar-h" class="wk-title rv">Archives</h2></div>
+    <div class="pj-head ctr"><h2 id="proj-ar-h" class="wk-title rv lt"><img src="t-archives.png" alt="Archives" width="658" height="194" style="--w:658" draggable="false"></h2></div>
     <div class="mb"><figure class="mb-t" style="--d:0" data-r="1.7955"><button type="button" class="mb-o" data-img="ap-9.jpg" data-art="1" aria-label="View larger: Painting of London landmarks on cardboard"><img src="ap-9.jpg" alt="Painting of London landmarks on cardboard" width="538" height="966" loading="lazy"></button></figure><figure class="mb-t" style="--d:1" data-r="1.3336"><button type="button" class="mb-o" data-img="mb-taggle.jpg" aria-label="View larger: Taggle launch newspaper against a lilac wall"><img src="mb-taggle.jpg" alt="Taggle launch newspaper against a lilac wall" width="1100" height="1467" loading="lazy"></button></figure><figure class="mb-t" style="--d:2" data-r="1.3330"><button type="button" class="mb-o" data-img="mb-gi1.jpg" aria-label="View larger: Loveleen with a vegetable bouquet outside General Items"><img src="mb-gi1.jpg" alt="Loveleen with a vegetable bouquet outside General Items" width="1000" height="1333" loading="lazy"></button></figure><figure class="mb-t" style="--d:3" data-r="1.7778"><button type="button" class="mb-o" data-vid="ar-fs.mp4" data-img="ar-fs.jpg" aria-label="Play with sound: Fashion show for a luxury dress brand"><video muted loop playsinline preload="metadata" poster="ar-fs.jpg" aria-hidden="true" style="aspect-ratio:540/960"><source src="ar-fs.mp4" type="video/mp4"></video></button></figure><figure class="mb-t" style="--d:0" data-r="1.2500"><button type="button" class="mb-o" data-img="mb-accent.jpg" aria-label="View larger: Substack essay cover: Your Accent Is a Dress Code"><img src="mb-accent.jpg" alt="Substack essay cover: Your Accent Is a Dress Code" width="1080" height="1350" loading="lazy"></button></figure><figure class="mb-t" style="--d:1" data-r="0.6986"><button type="button" class="mb-o" data-img="ap-1.jpg" aria-label="View larger: Gloved hands with a syringe and a red fruit under violet light"><img src="ap-1.jpg" alt="Gloved hands with a syringe and a red fruit under violet light" width="1400" height="978" loading="lazy"></button></figure><figure class="mb-t" style="--d:2" data-r="0.5625"><button type="button" class="mb-o" data-vid="mb-cafe.mp4" data-img="mb-cafe.jpg" aria-label="Play with sound: Hosting a brunch shoot at a café"><video muted loop playsinline preload="metadata" poster="mb-cafe.jpg" aria-hidden="true" style="aspect-ratio:960/540"><source src="mb-cafe.mp4" type="video/mp4"></video></button></figure><figure class="mb-t" style="--d:3" data-r="1.5080"><button type="button" class="mb-o" data-img="mb-trash.jpg" aria-label="View larger: Film photo: Less trash is more banner at an event"><img src="mb-trash.jpg" alt="Film photo: Less trash is more banner at an event" width="1000" height="1508" loading="lazy"></button></figure><figure class="mb-t" style="--d:0" data-r="1.3247"><button type="button" class="mb-o" data-img="mb-krump.jpg" aria-label="View larger: Krump resistance bands flat lay"><img src="mb-krump.jpg" alt="Krump resistance bands flat lay" width="542" height="718" loading="lazy"></button></figure><figure class="mb-t" style="--d:1" data-r="0.7414"><button type="button" class="mb-o" data-img="mb-glass1.jpg" aria-label="View larger: Dragon fruit and oranges seen through glasses of water"><img src="mb-glass1.jpg" alt="Dragon fruit and oranges seen through glasses of water" width="1400" height="1038" loading="lazy"></button></figure><figure class="mb-t" style="--d:2" data-r="0.5521"><button type="button" class="mb-o" data-img="ap-3.jpg" aria-label="View larger: Miniature skier among green leaves"><img src="ap-3.jpg" alt="Miniature skier among green leaves" width="1400" height="773" loading="lazy"></button></figure><figure class="mb-t" style="--d:3" data-r="1.3330"><button type="button" class="mb-o" data-img="mb-wheel.jpg" aria-label="View larger: Loveleen shaping clay on the pottery wheel"><img src="mb-wheel.jpg" alt="Loveleen shaping clay on the pottery wheel" width="1000" height="1333" loading="lazy"></button></figure><figure class="mb-t" style="--d:0" data-r="0.5950"><button type="button" class="mb-o" data-img="mb-clay.jpg" aria-label="View larger: Series of small clay sculptures"><img src="mb-clay.jpg" alt="Series of small clay sculptures" width="1400" height="833" loading="lazy"></button></figure><figure class="mb-t" style="--d:1" data-r="0.6361"><button type="button" class="mb-o" data-vid="mb-cheese.mp4" data-img="mb-cheese.jpg" aria-label="Play with sound: Illustrated animation of cheese being made"><video muted loop playsinline preload="metadata" poster="mb-cheese.jpg" aria-hidden="true" style="aspect-ratio:720/458"><source src="mb-cheese.mp4" type="video/mp4"></video></button></figure><figure class="mb-t" style="--d:2" data-r="0.5893"><button type="button" class="mb-o" data-img="ap-2.jpg" aria-label="View larger: Pink rubber gloves holding a white orchid"><img src="ap-2.jpg" alt="Pink rubber gloves holding a white orchid" width="1400" height="825" loading="lazy"></button></figure><figure class="mb-t" style="--d:3" data-r="1.4038"><button type="button" class="mb-o" data-img="mb-crab.jpg" aria-label="View larger: Save Marine Life campaign poster"><img src="mb-crab.jpg" alt="Save Marine Life campaign poster" width="738" height="1036" loading="lazy"></button></figure><figure class="mb-t" style="--d:0" data-r="1.5446"><button type="button" class="mb-o" data-img="ap-10.jpg" data-art="1" aria-label="View larger: Painted arched window on cardboard"><img src="ap-10.jpg" alt="Painted arched window on cardboard" width="404" height="624" loading="lazy"></button></figure><figure class="mb-t" style="--d:1" data-r="1.7780"><button type="button" class="mb-o" data-img="mb-unit.jpg" aria-label="View larger: Unit Filth posters spray-painted on cardboard"><img src="mb-unit.jpg" alt="Unit Filth posters spray-painted on cardboard" width="1000" height="1778" loading="lazy"></button></figure><figure class="mb-t" style="--d:2" data-r="1.5185"><button type="button" class="mb-o" data-vid="mb-cards.mp4" data-img="mb-cards.jpg" aria-label="Play with sound: Playing-card photo series"><video muted loop playsinline preload="metadata" poster="mb-cards.jpg" aria-hidden="true" style="aspect-ratio:540/820"><source src="mb-cards.mp4" type="video/mp4"></video></button></figure><figure class="mb-t" style="--d:3" data-r="0.5993"><button type="button" class="mb-o" data-img="mb-section.jpg" aria-label="View larger: Section drawing of a canal-side ceramics studio"><img src="mb-section.jpg" alt="Section drawing of a canal-side ceramics studio" width="1400" height="839" loading="lazy"></button></figure><figure class="mb-t" style="--d:0" data-r="0.5729"><button type="button" class="mb-o" data-img="mb-chairhall.jpg" aria-label="View larger: Cutaway drawing of a circular chair hall"><img src="mb-chairhall.jpg" alt="Cutaway drawing of a circular chair hall" width="1400" height="802" loading="lazy"></button></figure><figure class="mb-t" style="--d:1" data-r="1.7780"><button type="button" class="mb-o" data-img="mb-tools.jpg" aria-label="View larger: Wooden massage tools on black fabric"><img src="mb-tools.jpg" alt="Wooden massage tools on black fabric" width="1000" height="1778" loading="lazy"></button></figure><figure class="mb-t" style="--d:2" data-r="0.6667"><button type="button" class="mb-o" data-img="ap-4.jpg" aria-label="View larger: Miniature figures on a snowy model landscape"><img src="ap-4.jpg" alt="Miniature figures on a snowy model landscape" width="1128" height="752" loading="lazy"></button></figure><figure class="mb-t" style="--d:3" data-r="1.3333"><button type="button" class="mb-o" data-img="mb-paint.jpg" aria-label="View larger: Painted tote bags at the workshop table"><img src="mb-paint.jpg" alt="Painted tote bags at the workshop table" width="900" height="1200" loading="lazy"></button></figure><figure class="mb-t" style="--d:0" data-r="1.7780"><button type="button" class="mb-o" data-img="mb-flowers.jpg" aria-label="View larger: Aubergine and flower arrangement"><img src="mb-flowers.jpg" alt="Aubergine and flower arrangement" width="1000" height="1778" loading="lazy"></button></figure><figure class="mb-t" style="--d:1" data-r="0.6700"><button type="button" class="mb-o" data-img="mb-cows.jpg" data-art="1" aria-label="View larger: Digital illustration of cows on a canal boat"><img src="mb-cows.jpg" alt="Digital illustration of cows on a canal boat" width="806" height="540" loading="lazy"></button></figure><figure class="mb-t" style="--d:2" data-r="1.6611"><button type="button" class="mb-o" data-vid="ar-yg.mp4" data-img="ar-yg.jpg" aria-label="Play with sound: Yoga event for a start-up"><video muted loop playsinline preload="metadata" poster="ar-yg.jpg" aria-hidden="true" style="aspect-ratio:720/1196"><source src="ar-yg.mp4" type="video/mp4"></video></button></figure><figure class="mb-t" style="--d:3" data-r="0.6264"><button type="button" class="mb-o" data-img="ap-5.jpg" aria-label="View larger: Handmade waterfall landscape model"><img src="ap-5.jpg" alt="Handmade waterfall landscape model" width="1400" height="877" loading="lazy"></button></figure><figure class="mb-t" style="--d:0" data-r="0.4700"><button type="button" class="mb-o" data-img="mb-plan.jpg" aria-label="View larger: Furnished interior plan"><img src="mb-plan.jpg" alt="Furnished interior plan" width="1400" height="658" loading="lazy"></button></figure><figure class="mb-t" style="--d:1" data-r="1.3330"><button type="button" class="mb-o" data-img="mb-expo.jpg" aria-label="View larger: Loveleen at her architecture exhibition"><img src="mb-expo.jpg" alt="Loveleen at her architecture exhibition" width="1000" height="1333" loading="lazy"></button></figure><figure class="mb-t" style="--d:2" data-r="0.5514"><button type="button" class="mb-o" data-img="mb-glass2.jpg" aria-label="View larger: Flowers refracted through glasses of water"><img src="mb-glass2.jpg" alt="Flowers refracted through glasses of water" width="1400" height="772" loading="lazy"></button></figure><figure class="mb-t" style="--d:3" data-r="1.2961"><button type="button" class="mb-o" data-img="mb-sculpt.jpg" aria-label="View larger: Plaster figure among clay sculptures"><img src="mb-sculpt.jpg" alt="Plaster figure among clay sculptures" width="304" height="394" loading="lazy"></button></figure><figure class="mb-t" style="--d:0" data-r="0.6179"><button type="button" class="mb-o" data-img="ap-8.jpg" aria-label="View larger: Miniature figures sitting on bananas"><img src="ap-8.jpg" alt="Miniature figures sitting on bananas" width="1400" height="865" loading="lazy"></button></figure><figure class="mb-t" style="--d:1" data-r="0.6667"><button type="button" class="mb-o" data-img="ap-6.jpg" aria-label="View larger: Miniature hunters beside the model waterfall"><img src="ap-6.jpg" alt="Miniature hunters beside the model waterfall" width="1020" height="680" loading="lazy"></button></figure><figure class="mb-t" style="--d:2" data-r="1.4081"><button type="button" class="mb-o" data-img="ap-11.jpg" data-art="1" aria-label="View larger: Ink drawing of a European building facade"><img src="ap-11.jpg" alt="Ink drawing of a European building facade" width="446" height="628" loading="lazy"></button></figure><figure class="mb-t" style="--d:3" data-r="0.5536"><button type="button" class="mb-o" data-img="ap-7.jpg" aria-label="View larger: Miniature figures skating beside a terracotta pot"><img src="ap-7.jpg" alt="Miniature figures skating beside a terracotta pot" width="1400" height="775" loading="lazy"></button></figure></div>
   </div>
 </div>
@@ -1865,7 +1947,7 @@ html.work-open,html.work-open body{overflow:hidden}
     }
   };
   tapeObj._tap = toggleSong;                                  // pointer taps arrive via the drag handler
-  tapeBtn.addEventListener('click', e => { if (!e.pointerType) toggleSong(); });   // keyboard: Enter / Space
+  tapeBtn.addEventListener('click', e => { if (performance.now() - (window.__lastPtr || 0) > 700) toggleSong(); });   // keyboard: Enter / Space
 
   // ---- matcha: tap to whisk, with a brushy whisking sound ----
   const whiskBtn = document.getElementById('whisk'), mImg = document.getElementById('matchaImg');
@@ -1909,7 +1991,7 @@ html.work-open,html.work-open body{overflow:hidden}
   matchaObj.addEventListener('pointerenter', e => { if (e.pointerType !== 'mouse' || isDragging()) return; hovering = true; whisk(); });
   matchaObj.addEventListener('pointerleave', e => { if (e.pointerType !== 'mouse') return; hovering = false; stopWhisk(); });
   matchaObj._tap = type => { if (type !== 'mouse') whisk(); };
-  whiskBtn.addEventListener('click', e => { if (!e.pointerType) whisk(); });
+  whiskBtn.addEventListener('click', e => { if (performance.now() - (window.__lastPtr || 0) > 700) whisk(); });
 
   // ---- folder: hover (or tap on touch screens) to fan out the apps, with a short bloop ----
   const foldBtn = document.getElementById('fold'), folder = foldBtn.closest('.obj');
@@ -1938,7 +2020,7 @@ html.work-open,html.work-open body{overflow:hidden}
   folder.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !isDragging()) setFold(true); });
   folder.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') setFold(false); });
   folder._tap = type => { if (type !== 'mouse') setFold(!folder.classList.contains('open')); };
-  foldBtn.addEventListener('click', e => { if (!e.pointerType) setFold(!folder.classList.contains('open')); });
+  foldBtn.addEventListener('click', e => { if (performance.now() - (window.__lastPtr || 0) > 700) setFold(!folder.classList.contains('open')); });
   document.addEventListener('pointerdown', e => { if (!folder.contains(e.target)) setFold(false); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') setFold(false); });
   tools.forEach(b => b.addEventListener('click', () => setFold(false)));
@@ -1997,7 +2079,7 @@ html.work-open,html.work-open body{overflow:hidden}
     window.startTrip(win.getBoundingClientRect());
   };
   globeObj._tap = () => openWin();
-  globeBtn.addEventListener('click', e => { if (!e.pointerType) openWin(); });
+  globeBtn.addEventListener('click', e => { if (performance.now() - (window.__lastPtr || 0) > 700) openWin(); });
   document.getElementById('winX').addEventListener('click', closeWin);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeWin(); });
   // ---- after "Connected": a stamp journey through Dubai, Oxford and India ----
@@ -2160,6 +2242,7 @@ html.work-open,html.work-open body{overflow:hidden}
         <span class="puff p1"></span><span class="puff p2"></span><span class="puff p3"></span></div></div></div>
       <div class="trip-ui"><span class="trip-count"></span>
       <button class="trip-close" type="button"><svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8" stroke="#2A2726" stroke-width="2"/></svg>Close</button>
+      <button class="trip-home" type="button">&larr; Back home</button>
       <p class="trip-coords"></p><p class="trip-live" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></p></div>`;
     const r = rect || globeBtn.getBoundingClientRect();
     trip.style.setProperty('--cx', (r.left + r.width / 2) + 'px'); trip.style.setProperty('--cy', (r.top + r.height / 2) + 'px');
@@ -2169,6 +2252,7 @@ html.work-open,html.work-open body{overflow:hidden}
     requestAnimationFrame(() => requestAnimationFrame(() => trip && trip.classList.add('open')));
     later(journey, calm ? 0 : 500);
     trip.querySelector('.trip-close').addEventListener('click', () => { tick(); endTrip(); });
+    trip.querySelector('.trip-home').addEventListener('click', () => { tick(); endTrip(); setTimeout(() => scrollTo({top:0, behavior:'smooth'}), 450); });
     trip.addEventListener('keydown', e => { if (e.key === 'Tab') { e.preventDefault(); trip.querySelector('.trip-close').focus(); } });
     trip.querySelector('.trip-close').focus({ preventScroll: true });
   };
@@ -2208,7 +2292,7 @@ html.work-open,html.work-open body{overflow:hidden}
   cookieObj.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !isDragging()) startMunch(); });
   cookieObj.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') stopMunch(); });
   cookieObj._tap = type => { if (type !== 'mouse') munching ? stopMunch() : startMunch(); };
-  cookieBtn.addEventListener('click', e => { if (!e.pointerType) munching ? stopMunch() : startMunch(); });
+  cookieBtn.addEventListener('click', e => { if (performance.now() - (window.__lastPtr || 0) > 700) munching ? stopMunch() : startMunch(); });
   // ---- reels: fade in once a frame is ready, play only while on screen so scrolling stays smooth ----
   const reels = [...document.querySelectorAll('video.autoreel')];
   const calmReels = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2242,7 +2326,7 @@ html.work-open,html.work-open body{overflow:hidden}
   lampObj.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !isDragging() && !lampOn) setLamp(true); });
   lampObj.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && lampOn && !lampObj.classList.contains('dragging')) setLamp(false); });
   lampObj._tap = type => { if (type !== 'mouse') setLamp(!lampOn); };
-  lampBtn.addEventListener('click', e => { if (!e.pointerType) setLamp(!lampOn); });
+  lampBtn.addEventListener('click', e => { if (performance.now() - (window.__lastPtr || 0) > 700) setLamp(!lampOn); });
   // keep the light following the lamp while it is dragged or the desk rearranges
   const follow = () => { if (lampOn) aimLight(); requestAnimationFrame(follow); };
   requestAnimationFrame(follow);
@@ -2323,8 +2407,11 @@ html.work-open,html.work-open body{overflow:hidden}
     vel += ((y - lastY) - vel) * .2; lastY = y;
     for (const it of items) {
       const r = it.el.getBoundingClientRect();
-      if (r.bottom < -400 || r.top > vh + 400) { it.c = it.t = r.top > vh ? 0 : 1; }
-      else it.t = Math.min(1, Math.max(0, (vh - r.top) / (vh * .75)));
+      // play once: as soon as a piece reaches the screen it swings fully into place and stays there
+      // (works in every browser, including Safari when the page is shown inside a tall frame)
+      if (!it.done && r.top < vh * .92) it.done = true;
+      it.t = it.done ? 1 : 0;
+      if (it.done && r.bottom < 0 && it.c < 1) it.c = 1;
       it.c += (it.t - it.c) * .085;                       // heavy: lags behind the scroll and settles
       const m = (1 - ease(it.c)) * k, f = it.f;
       it.el.style.translate = `${(f.x || 0) * m}px ${(f.y || 0) * m}px`;
@@ -2963,6 +3050,37 @@ html.work-open,html.work-open body{overflow:hidden}
     nav.querySelector('.pn-all').addEventListener('click', () => pj.querySelector('.pj-back').click());
     nav.querySelector('.pn-go').addEventListener('click', () => { const t = tile(nk); pj.querySelector('.pj-back').click(); if (t) setTimeout(() => t.click(), 120); });
   });
+})();
+</script>
+
+<script>
+(() => {
+  // "scroll" cue at the bottom of the hero, gone once you start scrolling
+  const desk = document.getElementById('desk');
+  if (desk) { const c = document.createElement('div'); c.className = 'scroll-cue'; c.setAttribute('aria-hidden', 'true'); c.innerHTML = '<span>Scroll</span><i></i>'; desk.appendChild(c);
+    const upd = () => c.classList.toggle('gone', scrollY > 60); addEventListener('scroll', upd, {passive:true}); upd(); }
+  // sideways strips: say they swipe
+  const touch = matchMedia('(hover: none)').matches;
+  document.querySelectorAll('.bs-strip, .rs-strip').forEach(st => {
+    const h = document.createElement('span'); h.className = 'swipe-hint'; h.textContent = touch ? 'Swipe for more \u2192' : 'Scroll sideways or use the arrows \u2192';
+    const after = st.nextElementSibling && st.nextElementSibling.classList.contains('bs-arrows') ? st.nextElementSibling : st; after.after(h);
+  });
+  // creative direction reel carousel
+  document.querySelectorAll('.pj-stage').forEach(stg => { const h = document.createElement('span'); h.className = 'swipe-hint'; h.textContent = touch ? 'Swipe or tap the arrows to see more reels' : 'Use the arrows to see more reels'; stg.after(h); });
+  // "keep scrolling" whispers in whenever someone pauses and there is more below
+  const ks = document.createElement('div'); ks.className = 'keep-scroll'; ks.setAttribute('aria-hidden', 'true'); ks.innerHTML = 'Keep scrolling <b>&darr;</b>'; document.body.appendChild(ks);
+  const scroller = () => { const p = [...document.querySelectorAll('.proj')].find(x => !x.hidden); if (p) return p; const w = document.getElementById('work'); if (w && !w.hidden) return w; return null; };
+  const blocked = () => { const lb = document.getElementById('lbx'); if (lb && !lb.hidden) return true; return !!document.querySelector('.trip.open'); };
+  const moreBelow = () => { const sc = scroller(); if (sc) return sc.scrollHeight - sc.clientHeight - sc.scrollTop > 160; return document.documentElement.scrollHeight - innerHeight - scrollY > 160; };
+  let idle = 0;
+  const arm = () => { ks.classList.remove('on'); clearTimeout(idle); idle = setTimeout(() => { if (!blocked() && moreBelow() && !(scroller() === null && scrollY < 60)) ks.classList.add('on'); }, 2600); };
+  addEventListener('scroll', arm, {passive:true, capture:true});
+  addEventListener('touchstart', () => ks.classList.remove('on'), {passive:true});
+  addEventListener('workchange', arm);
+  setTimeout(arm, 4000);
+  // scrollbar width (macOS with a mouse shows classic scrollbars; 100vw includes them)
+  const sbw = () => document.documentElement.style.setProperty('--sbw', Math.max(0, innerWidth - document.documentElement.clientWidth) + 'px');
+  sbw(); addEventListener('resize', sbw);
 })();
 </script>
 
