@@ -2377,7 +2377,7 @@ main > *{min-width:0}
   const wait = ms => new Promise(r => setTimeout(r, ms));
   const type = async w => { for (const ch of w) { if (done) return; out.textContent += ch; await wait(85 + Math.random() * 60); } };
   const erase = async () => { while (out.textContent && !done) { out.textContent = out.textContent.slice(0, -1); await wait(45); } };
-  (async () => { await wait(450); await type('hi there'); await wait(700); await erase(); await wait(250);
+  (async () => { await wait(450); await type('Hiya!'); await wait(700); await erase(); await wait(250);
     await type('welcome in'); await wait(800); finish(); })();
 })();
 </script>
