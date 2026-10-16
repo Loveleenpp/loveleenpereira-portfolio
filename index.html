@@ -1,4 +1,6 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script>window.goatcounter={no_onload:!/(^|\.)loveleepereira\.com$/.test(location.hostname)};</script>
+<script data-goatcounter="https://loveleenpereira.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head><body>
 <title>Loveleen Pereira</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1665,7 +1667,7 @@ main > *{min-width:0}
         <p class="cp-no rv">Campaign 02</p>
         <h3 id="cp-h-ea" class="cp-h rv"><span>Elizabeth Arden</span>The Dubai launch</h3>
         <dl class="cp-meta rv"><div><dt>Context</dt><dd>Launch campaign</dd></div><div><dt>My part</dt><dd>Scripting &amp; Creative Development</dd></div></dl>
-        <p class="cp-p rv">For the Dubai launch of Elizabeth Arden, I was entrusted with leading the scripting and creative development of the campaign. I conceptualised the scenes, wrote the script, and developed the storyboard, translating the brand&rsquo;s brief into a clear and engaging narrative.</p><p class="cp-p rv">Working closely with Twinkle Stanley and the wider team, I was part of the creative direction and there on the day, focusing on creating a reel that effectively communicated the product&rsquo;s formulation while maintaining a visually compelling and informative approach.</p>
+        <p class="cp-p rv">For the Dubai launch of Elizabeth Arden, I was entrusted with leading the scripting and creative development of the campaign. I conceptualised the scenes, wrote the script, and developed the storyboard, translating the brand&rsquo;s brief into a clear and engaging narrative.</p><p class="cp-p rv">Working closely with Twinkle Stanley and the wider team, I focused on creating a reel that effectively communicated the product&rsquo;s formulation while maintaining a visually compelling and informative approach, although the collaboration was conducted without me being present due to other priorities.</p>
         
       </div>
       <figure class="cp-reel rv"><video muted loop playsinline preload="metadata" poster="bc-ea.jpg" style="aspect-ratio:720/1076" aria-label="Elizabeth Arden campaign reel"><source src="bc-ea.mp4" type="video/mp4"></video>
@@ -1834,6 +1836,7 @@ main > *{min-width:0}
 </div>
 
 
+<div class="cursor" id="cursor" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M1 1l12 5-5 2-2 5z"/></svg><span>Loveleen</span></div>
 
 <script>
 (() => {
@@ -2345,6 +2348,13 @@ main > *{min-width:0}
     // pause when scrolled away
     if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && !sv.paused) sv.pause(); })).observe(sv);
   }
+  // ---- cursor name tag ----
+  const cur = document.getElementById('cursor');
+  if (matchMedia('(pointer:fine)').matches) {
+    addEventListener('pointermove', e => { cur.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; cur.classList.add('on'); }, {passive:true});
+    document.addEventListener('pointerleave', () => cur.classList.remove('on'));
+  }
+
   // ---- copy email ----
   const copyBtn = document.getElementById('copyBtn'), mail = document.getElementById('mail');
   copyBtn.addEventListener('click', () => {
@@ -3076,4 +3086,23 @@ main > *{min-width:0}
 })();
 </script>
 
+<script>
+/* GoatCounter: count Work page and project opens, only on the live domain */
+(function(){
+  if (!/(^|\.)loveleepereira\.com$/.test(location.hostname)) return;
+  var names = {cd:'Creative Direction', sm:'Social Media', bs:'Branding', bc:'Campaigns', ar:'Archives'};
+  function count(o){ try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(o); } catch(e){} }
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest ? e.target : null;
+    if (!t) return;
+    var p = t.closest('[data-proj]');
+    if (p) {
+      var key = p.getAttribute('data-proj');
+      if (names[key]) count({path:'/work/' + key, title:names[key]});
+      return;
+    }
+    if (t.closest('a[data-sec="work"]')) count({path:'/work', title:'Work'});
+  }, true);
+})();
+</script>
 </body></html>
